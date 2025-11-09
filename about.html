@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PixOn – Scegli la tua maglietta</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f9fafc;
+      color: #222;
+    }
+
+    header {
+      background-color: #000;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #ff006e;
+      font-size: 1.8em;
+    }
+
+    .container {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .container h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+
+    .shirt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+      justify-items: center;
+    }
+
+    .shirt {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 220px;
+      cursor: pointer;
+      transition: 0.3s;
+      border: 3px solid transparent;
+    }
+
+    .shirt img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .shirt h3 {
+      padding: 15px;
+      font-size: 1.1em;
+    }
+
+    .shirt:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+    }
+
+    .selected {
+      border: 3px solid #ff006e;
+    }
+
+    .btn {
+      background-color: #ff006e;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 30px;
+      font-size: 1em;
+      cursor: pointer;
+      font-weight: 600;
+      margin-top: 40px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #e50061;
+    }
+
+    footer {
+      background-color: #000;
+      color: #fff;
+      text-align: center;
+      padding: 25px 10px;
+      margin-top: 60px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>PixOn</h1>
+    <p>Scegli il tuo stile ??</p>
+  </header>
+
+  <div class="container">
+    <h2>Seleziona il tipo di maglietta</h2>
+    <p>Scegli la base perfetta per la tua creazione personalizzata.</p>
+
+    <div class="shirt-grid">
+      <div class="shirt" onclick="selectShirt(this, 'T-Shirt Classica')">
+        <img src="https://i.pinimg.com/736x/60/b8/11/60b811c76ff48c412afb55c245e751bd.jpg" alt="T-Shirt Classica">
+        <h3>T-Shirt Classica</h3>
+      </div>
+      <div class="shirt" onclick="selectShirt(this, 'T-Shirt Oversize')">
+        <img src="https://cdn.prezzo.org/offer/it/jack-jones-jjebradley-tee-ss-o-neck-noos-t-shirt-uomo-bianco-white-xl-200t180dc7311b02674913a2fb5a8152196f6c5fdc52f6b.jpg" alt="T-Shirt Oversize">
+        <h3>T-Shirt Oversize</h3>
+      </div>
+      <div class="shirt" onclick="selectShirt(this, 'T-Shirt Crop')">
+        <img src="https://www.erressegi.it/wp-content/uploads/2019/10/felpa-senza-cap.-chiusa-uomo-fruit-bianco.jpg" alt="Felpa senza cappuccio">
+        <h3>T-Shirt Crop</h3>
+      </div>
+      <div class="shirt" onclick="selectShirt(this, 'Felpa con Cappuccio')">
+        <img src="https://colortarget.it/wp-content/uploads/2021/01/SU1087_01_2_1.jpg" alt="Felpa con Cappuccio">
+        <h3>Felpa con Cappuccio</h3>
+      </div>
+    </div>
+
+    <button class="btn" onclick="confirmChoice()">Conferma scelta</button>
+    <p id="selected-shirt" style="margin-top:20px; font-weight:600;"></p>
+  </div>
+
+  <footer>
+    <p>© 2025 PixOn – Indossa le tue idee</p>
+  </footer>
+
+  <script>
+    let selected = null;
+
+    function selectShirt(element, name) {
+      document.querySelectorAll('.shirt').forEach(s => s.classList.remove('selected'));
+      element.classList.add('selected');
+      selected = name;
+      document.getElementById('selected-shirt').innerText = `Hai scelto: ${name}`;
+    }
+
+    function confirmChoice() {
+      if (!selected) {
+        alert('Seleziona prima un tipo di maglietta!');
+      } else {
+        alert(`Hai confermato: ${selected}`);
+        // Qui potresti reindirizzare alla prossima pagina (es. personalizzazione)
+        // window.location.href = "personalizza.html";
+      }
+    }
+  </script>
+
+</body>
+</html>
+
